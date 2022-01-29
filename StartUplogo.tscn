@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/assets/background/the_fix n swis.png" type="Texture" id=1]
+[ext_resource path="res://StartUplogo.gd" type="Script" id=2]
+
+[node name="StartUplogo" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 360.0
+margin_bottom = 740.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Control"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Timer" type="Timer" parent="Control"]
+[connection signal="timeout" from="Control/Timer" to="." method="_on_Timer_timeout"]
