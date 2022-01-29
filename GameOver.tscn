@@ -1,0 +1,187 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://resources/assets/background/bg8.png" type="Texture" id=1]
+[ext_resource path="res://resources/fonts/BigSpace-rPKx.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://resources/assets/icons/Window.png" type="Texture" id=3]
+[ext_resource path="res://resources/assets/icons/Close_BTN.png" type="Texture" id=4]
+[ext_resource path="res://resources/assets/icons/Cristal_Icon.png" type="Texture" id=5]
+[ext_resource path="res://resources/assets/icons/Replay_BTN.png" type="Texture" id=6]
+[ext_resource path="res://resources/assets/icons/Record.png" type="Texture" id=7]
+[ext_resource path="res://resources/assets/icons/Score.png" type="Texture" id=8]
+[ext_resource path="res://resources/assets/icons/Table.png" type="Texture" id=9]
+[ext_resource path="res://resources/assets/icons/active/ad_button_active.png" type="Texture" id=10]
+[ext_resource path="res://resources/assets/icons/ad_button.png" type="Texture" id=11]
+[ext_resource path="res://resources/assets/icons/active/Replay_BTN.png" type="Texture" id=12]
+[ext_resource path="res://resources/assets/icons/active/Close_BTN.png" type="Texture" id=13]
+[ext_resource path="res://GameOver.gd" type="Script" id=14]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 65
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 70
+font_data = ExtResource( 2 )
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 360.0
+margin_bottom = 740.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverBg" type="Sprite" parent="Control"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 40.0
+margin_top = 35.26
+margin_right = 320.0
+margin_bottom = 114.26
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.890196, 0.960784, 0.956863, 1 )
+text = "GAME OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverContainer" type="Sprite" parent="Control"]
+position = Vector2( 30, 220 )
+scale = Vector2( 0.32, 0.32 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ScoreTag" type="Sprite" parent="Control/GameOverContainer"]
+position = Vector2( 60, 250 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="RecordTag" type="Sprite" parent="Control/GameOverContainer"]
+position = Vector2( 60, 350 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="CurrencyTag" type="Sprite" parent="Control/GameOverContainer"]
+position = Vector2( 120, 500 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="ScoreHolder" type="Sprite" parent="Control/GameOverContainer"]
+position = Vector2( 450, 230 )
+scale = Vector2( 1.2, 0.9 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ScoreLabel" type="Label" parent="Control/GameOverContainer/ScoreHolder"]
+margin_right = 345.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.890196, 0.960784, 0.956863, 1 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecordHolder" type="Sprite" parent="Control/GameOverContainer"]
+position = Vector2( 450, 330 )
+scale = Vector2( 1.2, 0.9 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="RecordLabel" type="Label" parent="Control/GameOverContainer/RecordHolder"]
+margin_right = 345.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.890196, 0.960784, 0.956863, 1 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrenyHolder" type="Sprite" parent="Control/GameOverContainer"]
+position = Vector2( 450, 440 )
+scale = Vector2( 1.2, 0.9 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="CurrencyLabel" type="Label" parent="Control/GameOverContainer/CurrenyHolder"]
+margin_right = 345.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.890196, 0.960784, 0.956863, 1 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryButton" type="TextureButton" parent="Control/GameOverContainer"]
+margin_left = 370.0
+margin_top = 810.0
+margin_right = 570.0
+margin_bottom = 1010.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdButton" type="TextureButton" parent="Control/GameOverContainer"]
+visible = false
+margin_left = 100.0
+margin_top = 810.0
+margin_right = 300.0
+margin_bottom = 1010.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TextureButton" parent="Control/GameOverContainer"]
+margin_left = 650.0
+margin_top = 810.0
+margin_right = 850.0
+margin_bottom = 1010.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdMob" type="Node" parent="Control"]
+script = ExtResource( 15 )
+is_real = true
+banner_on_top = false
+banner_id = "ca-app-pub-9093002613352397/2504992224"
+interstitial_id = "ca-app-pub-9093002613352397/6719569409"
+rewarded_id = "ca-app-pub-9093002613352397/5841602008"
+[connection signal="pressed" from="Control/GameOverContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="Control/GameOverContainer/AdButton" to="." method="_on_AdButton_pressed"]
+[connection signal="pressed" from="Control/GameOverContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="rewarded" from="Control/AdMob" to="." method="_on_AdMob_rewarded"]
+[connection signal="rewarded_video_closed" from="Control/AdMob" to="." method="_on_AdMob_rewarded_video_closed"]
+[connection signal="rewarded_video_loaded" from="Control/AdMob" to="." method="_on_AdMob_rewarded_video_loaded"]
